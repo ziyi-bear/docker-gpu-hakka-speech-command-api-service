@@ -6,8 +6,8 @@ services:
         build: ./
         restart: always
         environment:
-            - VIRTUAL_HOST=hakka-speech.mlc.app,hakka-speech.csie.nuu.edu.tw
-            - LETSENCRYPT_HOST=hakka-speech.mlc.app,hakka-speech.csie.nuu.edu.tw
+            - VIRTUAL_HOST=alpha.hakka.csie.nuu.edu.tw
+            - LETSENCRYPT_HOST=alpha.hakka.csie.nuu.edu.tw
             - LETSENCRYPT_EMAIL=m0724001@gm.nuu.edu.tw
             - VIRTUAL_PORT=80
             # 網頁顯示參數
@@ -24,8 +24,8 @@ services:
         build: ./
         restart: always
         environment:
-            - VIRTUAL_HOST=hakka-speech.mlc.app,hakka-speech.csie.nuu.edu.tw
-            - LETSENCRYPT_HOST=hakka-speech.mlc.app,hakka-speech.csie.nuu.edu.tw
+            - VIRTUAL_HOST=beta.hakka.csie.nuu.edu.tw
+            - LETSENCRYPT_HOST=beta.hakka.csie.nuu.edu.tw
             - LETSENCRYPT_EMAIL=m0724001@gm.nuu.edu.tw
             - VIRTUAL_PORT=80
             # 網頁顯示參數
@@ -42,8 +42,8 @@ services:
         build: ./
         restart: always
         environment:
-            - VIRTUAL_HOST=hakka-speech.mlc.app,hakka-speech.csie.nuu.edu.tw
-            - LETSENCRYPT_HOST=hakka-speech.mlc.app,hakka-speech.csie.nuu.edu.tw
+            - VIRTUAL_HOST=charlie.hakka.csie.nuu.edu.tw
+            - LETSENCRYPT_HOST=charlie.hakka.csie.nuu.edu.tw
             - LETSENCRYPT_EMAIL=m0724001@gm.nuu.edu.tw
             - VIRTUAL_PORT=80
             # 網頁顯示參數

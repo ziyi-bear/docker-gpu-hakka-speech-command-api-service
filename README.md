@@ -5,4 +5,5 @@ tensorflow speech command example simple api service
 `sudo docker-compose up -d --build`
 
 # 主機IP
-
+* `IP`: `120.105.128.209`
+* `使用者`: `skynet`
