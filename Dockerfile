@@ -14,12 +14,14 @@ RUN apt-get update && \
     python3-pip \
     locales
 
-RUN pip3 install flask-bootstrap \
-    flask-mqtt \
-    flask-socketio \
+RUN pip3 install \
     tensorflow \
     flask
 
-RUN cd /tmp && \
-    git clone https://github.com/tensorflow/tensorflow.git && \
-    
+# If STATIC_INDEX is 1, serve / with /static/index.html directly (or the static URL configured)
+ENV STATIC_INDEX 1
+
+EXPOSE 80
+
+COPY ./app /app
+WORKDIR /app

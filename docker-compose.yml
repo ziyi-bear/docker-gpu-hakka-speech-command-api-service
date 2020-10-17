@@ -1,0 +1,5 @@
+# 客家語音快速獨立擴充系統
+version: '2.3'
+services:
+    model-alpha:
+        build: 
