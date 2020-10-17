@@ -34,3 +34,6 @@ EXPOSE 80
 
 COPY ./app /app
 WORKDIR /app
+
+# 因採用MQTT通訊, 因此不可多線程
+CMD [ "python3", "-u", "/app/app.py" ]

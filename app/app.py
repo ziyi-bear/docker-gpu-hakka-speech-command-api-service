@@ -131,7 +131,7 @@ def allowed_file(filename):
 
 @app.route('/', methods=['GET', 'POST'])
 def run_wav_test():
-  global classCount
+  global classCount, sample_rate, soundlenght, step
 
   if request.method == 'POST':
     # 如果使用者沒有打算夾帶音訊檔案的話則不處理

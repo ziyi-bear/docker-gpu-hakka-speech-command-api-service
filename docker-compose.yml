@@ -1,5 +1,56 @@
 # 客家語音快速獨立擴充系統
 version: '2.3'
 services:
+    # 模型alpha
     model-alpha:
-        build: 
+        build: ./
+        restart: always
+        environment:
+            - VIRTUAL_HOST=hakka-speech.mlc.app,hakka-speech.csie.nuu.edu.tw
+            - LETSENCRYPT_HOST=hakka-speech.mlc.app,hakka-speech.csie.nuu.edu.tw
+            - LETSENCRYPT_EMAIL=m0724001@gm.nuu.edu.tw
+            - VIRTUAL_PORT=80
+            # 網頁顯示參數
+            - CLASS_COUNT=10
+            - SAMPLE_RATE=16000
+            - SOUND_LENGTH=25
+            - STEP=25
+        volumes:
+            - './模型alpha/conv_labels_1.txt:/labels.txt:rw'
+            - './模型alpha/my_frozen_graph1.pb:/graph.pb:rw'
+    
+    # 模型beta
+    model-beta:
+        build: ./
+        restart: always
+        environment:
+            - VIRTUAL_HOST=hakka-speech.mlc.app,hakka-speech.csie.nuu.edu.tw
+            - LETSENCRYPT_HOST=hakka-speech.mlc.app,hakka-speech.csie.nuu.edu.tw
+            - LETSENCRYPT_EMAIL=m0724001@gm.nuu.edu.tw
+            - VIRTUAL_PORT=80
+            # 網頁顯示參數
+            - CLASS_COUNT=10
+            - SAMPLE_RATE=16000
+            - SOUND_LENGTH=25
+            - STEP=25
+        volumes:
+            - './模型beta/conv_labels_2.txt:/labels.txt:rw'
+            - './模型beta/my_frozen_graph2.pb:/graph.pb:rw'
+
+    # 模型charlie
+    model-charlie:
+        build: ./
+        restart: always
+        environment:
+            - VIRTUAL_HOST=hakka-speech.mlc.app,hakka-speech.csie.nuu.edu.tw
+            - LETSENCRYPT_HOST=hakka-speech.mlc.app,hakka-speech.csie.nuu.edu.tw
+            - LETSENCRYPT_EMAIL=m0724001@gm.nuu.edu.tw
+            - VIRTUAL_PORT=80
+            # 網頁顯示參數
+            - CLASS_COUNT=10
+            - SAMPLE_RATE=16000
+            - SOUND_LENGTH=25
+            - STEP=25
+        volumes:
+            - './模型charlie/conv_labels_3.txt:/labels.txt:rw'
+            - './模型charlie/my_frozen_graph3.pb:/graph.pb:rw'
