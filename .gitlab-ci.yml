@@ -28,6 +28,7 @@ sonarqube_scan_project:
     - docker run --rm -e SONAR_HOST_URL=${SONAR_HOST_URL} 
       -v "${PWD}:/usr/src" -v ${PWD}/.sonar-cache:/opt/sonar-scanner/.sonar/cache 
       sonarsource/sonar-scanner-cli
+    - rm -r .sonar-cache
 
 deploy_service:
   stage: production
