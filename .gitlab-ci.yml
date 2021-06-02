@@ -22,13 +22,13 @@ sonarqube_scan_project:
   cache: 
     key: ${CI_COMMIT_REF_SLUG}-sonarqube
     paths:
-      - sonar-cache/
+      - .sonar-cache/
   # 允許在資安掃描時失敗
   allow_failure: true
   script:
     - echo "Prepare Sonarqube Scan - Server ${SONAR_HOST_URL}" 
     - docker run --rm -e SONAR_HOST_URL=${SONAR_HOST_URL} 
-      -v "${PWD}:/usr/src" -v ${PWD}/sonar-cache:/opt/sonar-scanner/.sonar/cache 
+      -v "${PWD}:/usr/src" -v ${PWD}/.sonar-cache:/opt/sonar-scanner/.sonar/cache 
       sonarsource/sonar-scanner-cli
 
 deploy_service:
