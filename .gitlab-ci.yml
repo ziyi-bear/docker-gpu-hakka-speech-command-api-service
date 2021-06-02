@@ -14,6 +14,7 @@ hakka_service_image:
 
 deploy_service:
   stage: production
+  needs: ["hakka_service_image"]
   script:
     - ls 
     - docker-compose up -d --build
