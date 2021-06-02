@@ -1,5 +1,7 @@
 before_script:
   - docker info
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
 
 stages:
   - build
@@ -16,9 +18,15 @@ hakka_service_image:
 
 sonarqube_scan_project:
   stage: test
+  # sonarqube掃描快取資料
+  cache: ${CI_COMMIT_REF_SLUG}-sonarqube
+  paths:
+      - .sonar-cache/
   script:
-    - echo "Prepare Sonarqube Scan - Server ${SONAR_HOST_URL}"
-    - docker run --rm --user="$(id -u):$(id -g)" -e SONAR_HOST_URL=http://${SONAR_HOST_URL} -v "${PWD}:/usr/src" sonarsource/sonar-scanner-cli
+    - echo "Prepare Sonarqube Scan - Server ${SONAR_HOST_URL}" 
+    - docker run --rm --user="$(id -u):$(id -g)" -e SONAR_HOST_URL=http://${SONAR_HOST_URL} \ 
+      -v "${PWD}:/usr/src" -v ${PWD}/.sonar-cache:/opt/sonar-scanner/.sonar/cache \ 
+      sonarsource/sonar-scanner-cli
 
 deploy_service:
   stage: production
