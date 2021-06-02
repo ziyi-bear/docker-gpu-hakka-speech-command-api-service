@@ -1,3 +1,6 @@
+include: 
+  - 'https://raw.githubusercontent.com/iii-org/iii-gitlab-ci-template/master/template/sonarqube.yaml'
+  
 before_script:
   - docker info
 
