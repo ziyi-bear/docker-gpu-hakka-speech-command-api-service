@@ -30,8 +30,7 @@ sonarqube_scan_project:
     - echo "Prepare Sonarqube Scan - Server ${SONAR_HOST_URL}" 
     - docker run --rm -e SONAR_HOST_URL=${SONAR_HOST_URL} 
       -v "${PWD}:/usr/src" 
-      sonarsource/sonar-scanner-cli
-
+      sonarsource/sonar-scanner-cli -Dsonar.qualitygate.wait=true -Dsonar.projectKey=${CI_PROJECT_NAME}-${CI_PROJECT_ID} -Dsonar.projectName=${CI_PROJECT_PATH_SLUG} -Dsonar.projectVersion=${CI_COMMIT_SHORT_SHA}
 deploy_service:
   stage: production
   needs: ["hakka_service_image"]
