@@ -4,7 +4,7 @@ services:
     # 模型alpha
     model-alpha:
         #build: ./
-        images: registry.406.csie.nuu.edu.tw/hakka-405/docker-gpu-hakka-speech-command-api-service/hakka-service:latest
+        image: registry.406.csie.nuu.edu.tw/hakka-405/docker-gpu-hakka-speech-command-api-service/hakka-service:latest
         restart: always
         environment:
             - VIRTUAL_HOST=alpha.hakka.csie.nuu.edu.tw
@@ -23,7 +23,7 @@ services:
     # 模型beta
     model-beta:
         #build: ./
-        images: registry.406.csie.nuu.edu.tw/hakka-405/docker-gpu-hakka-speech-command-api-service/hakka-service:latest
+        image: registry.406.csie.nuu.edu.tw/hakka-405/docker-gpu-hakka-speech-command-api-service/hakka-service:latest
         restart: always
         environment:
             - VIRTUAL_HOST=beta.hakka.csie.nuu.edu.tw
@@ -42,7 +42,7 @@ services:
     # 模型charlie
     model-charlie:
         #build: ./
-        images: registry.406.csie.nuu.edu.tw/hakka-405/docker-gpu-hakka-speech-command-api-service/hakka-service:latest
+        image: registry.406.csie.nuu.edu.tw/hakka-405/docker-gpu-hakka-speech-command-api-service/hakka-service:latest
         restart: always
         environment:
             - VIRTUAL_HOST=charlie.hakka.csie.nuu.edu.tw
