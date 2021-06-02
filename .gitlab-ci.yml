@@ -17,7 +17,8 @@ hakka_service_image:
 sonarqube_scan_project:
   stage: test
   script:
-    - docker run --rm --user="$(id -u):$(id -g)" -e SONAR_HOST_URL="http://${SONARQUBE_URL}" -v "${PWD}:/usr/src" sonarsource/sonar-scanner-cli
+    - echo "準備進行sonarqube資安掃描 Server: ${SONAR_HOST_URL}"
+    - docker run --rm --user="$(id -u):$(id -g)" -e SONAR_HOST_URL=http://${SONAR_HOST_URL} -v "${PWD}:/usr/src" sonarsource/sonar-scanner-cli
 
 deploy_service:
   stage: production
