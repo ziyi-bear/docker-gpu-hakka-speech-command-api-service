@@ -8,6 +8,7 @@ stages:
 hakka_service_image:
   stage: build
   script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     - docker build -t registry.406.csie.nuu.edu.tw/hakka-405/docker-gpu-hakka-speech-command-api-service/hakka-service .
     - docker push registry.406.csie.nuu.edu.tw/hakka-405/docker-gpu-hakka-speech-command-api-service/hakka-service
 
