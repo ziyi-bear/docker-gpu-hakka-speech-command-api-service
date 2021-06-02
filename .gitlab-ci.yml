@@ -7,7 +7,6 @@ stages:
 show_docker_info:
   stage: env-info
   script:
-    - docker ps -a
     - ls 
     - pwd
     #- docker run my-docker-image /script/to/run/tests
