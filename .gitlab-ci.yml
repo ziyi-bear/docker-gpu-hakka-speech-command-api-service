@@ -1,8 +1,9 @@
-job:
+before_script:
+  - docker info
+
+build_image:
   script:
-    - |
-      echo "perpare service"
-      ls
-      pwd
-      echo "Second command line."
-      echo "Third command line.
+    - docker ps -a
+    - ls 
+    - pwd
+    #- docker run my-docker-image /script/to/run/tests
