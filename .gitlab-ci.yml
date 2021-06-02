@@ -1,7 +1,11 @@
 before_script:
   - docker info
 
-build_image:
+stages:
+  - env-info
+
+show_docker_info:
+  stage: env-info
   script:
     - docker ps -a
     - ls 
