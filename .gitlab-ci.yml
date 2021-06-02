@@ -2,9 +2,16 @@ before_script:
   - docker info
 
 stages:
+  - build
   - production
 
-show_docker_info:
+hakka_service_image:
+  stage: build
+  script:
+    - docker build -t registry.406.csie.nuu.edu.tw/hakka-405/docker-gpu-hakka-speech-command-api-service/hakka-service .
+    - docker push registry.406.csie.nuu.edu.tw/hakka-405/docker-gpu-hakka-speech-command-api-service/hakka-service
+
+deploy_service:
   stage: production
   script:
     - ls 
