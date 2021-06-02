@@ -14,6 +14,11 @@ hakka_service_image:
     - docker build -t $CI_REGISTRY/hakka-405/docker-gpu-hakka-speech-command-api-service/hakka-service .
     - docker push $CI_REGISTRY/hakka-405/docker-gpu-hakka-speech-command-api-service/hakka-service
 
+sonarqube_scan_project:
+  stage: test
+  script:
+    - docker run --rm --user="$(id -u):$(id -g)" -e SONAR_HOST_URL="http://${SONARQUBE_URL}" -v "${PWD}:/usr/src" sonarsource/sonar-scanner-cli
+
 deploy_service:
   stage: production
   needs: ["hakka_service_image"]
