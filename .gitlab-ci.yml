@@ -1,6 +1,5 @@
 before_script:
-  - docker info
-  - git clean -ffdx
+  - nvidia-smi
 
 stages:
   - build
