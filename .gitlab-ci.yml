@@ -4,6 +4,7 @@ before_script:
 stages:
   - build
   - production
+  - log
 
 hakka_service_image:
   stage: build
@@ -19,3 +20,10 @@ deploy_service:
     - ls 
     - docker-compose up -d --build
     #- docker run my-docker-image /script/to/run/tests
+
+service_log:
+  stage: log
+  needs: ["deploy_service"]
+  script:
+    - docker-compose ps 
+    - docker-compose logs
