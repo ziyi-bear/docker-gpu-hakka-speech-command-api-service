@@ -1,7 +1,6 @@
 before_script:
   - docker info
-#cache:
-#  key: ${CI_COMMIT_REF_SLUG}
+  - git clean -ffdx
 
 stages:
   - build
