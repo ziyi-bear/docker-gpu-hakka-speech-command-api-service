@@ -18,10 +18,10 @@ hakka_service_image:
 sonarqube_scan_project:
   stage: test
   # sonarqube掃描快取資料
-  cache: 
-    key: ${CI_COMMIT_REF_SLUG}-sonarqube
-    paths:
-      - .sonar-cache/
+  #cache: 
+  #  key: ${CI_COMMIT_REF_SLUG}-sonarqube
+  #  paths:
+  #    - .sonar-cache/
   # 允許在資安掃描時失敗
   allow_failure: true
   script:
