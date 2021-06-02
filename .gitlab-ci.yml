@@ -1,11 +1,12 @@
-include: 
-  - 'https://raw.githubusercontent.com/iii-org/iii-gitlab-ci-template/master/template/sonarqube.yaml'
+#includes: 
+#  - 'https://raw.githubusercontent.com/iii-org/iii-gitlab-ci-template/master/template/sonarqube.yaml'
   
 before_script:
   - docker info
 
 stages:
   - build
+  - test
   - production
   - log
 
