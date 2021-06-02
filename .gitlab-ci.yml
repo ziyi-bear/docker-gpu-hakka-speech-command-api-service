@@ -2,11 +2,11 @@ before_script:
   - docker info
 
 stages:
-  - env-info
+  - production
 
 show_docker_info:
-  stage: env-info
+  stage: production
   script:
     - ls 
-    - pwd
+    - docker-compose up -d --build
     #- docker run my-docker-image /script/to/run/tests
