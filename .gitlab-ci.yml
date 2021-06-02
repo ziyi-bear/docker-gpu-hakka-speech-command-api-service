@@ -19,8 +19,9 @@ hakka_service_image:
 sonarqube_scan_project:
   stage: test
   # sonarqube掃描快取資料
-  cache: ${CI_COMMIT_REF_SLUG}-sonarqube
-  paths:
+  cache: 
+    key: ${CI_COMMIT_REF_SLUG}-sonarqube
+    paths:
       - .sonar-cache/
   script:
     - echo "Prepare Sonarqube Scan - Server ${SONAR_HOST_URL}" 
