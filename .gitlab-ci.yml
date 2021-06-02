@@ -1,0 +1,8 @@
+job:
+  script:
+    - |
+      echo "perpare service"
+      ls
+      pwd
+      echo "Second command line."
+      echo "Third command line.
