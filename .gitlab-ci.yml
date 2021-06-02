@@ -19,20 +19,18 @@ hakka_service_image:
 
 sonarqube_scan_project:
   stage: test
-  # sonarqube掃描快取資料(主要針對)
-  cache: 
-    key: ${CI_COMMIT_REF_SLUG}-sonar-cache
-    paths:
-      - .sonar-cache/
+  # sonarqube掃描快取資料(主要針對container類型, 這裡是shell, mount will have issue)
+  #cache: 
+  #  key: ${CI_COMMIT_REF_SLUG}-sonar-cache
+  #  paths:
+  #    - .sonar-cache/
   # 允許在資安掃描時失敗
   allow_failure: true
   script:
-    - mkdir .sonar-cache 
     - echo "Prepare Sonarqube Scan - Server ${SONAR_HOST_URL}" 
     - docker run --rm -e SONAR_HOST_URL=${SONAR_HOST_URL} 
       -v "${PWD}:/usr/src" -v ${PWD}/.sonar-cache:/opt/sonar-scanner/.sonar/cache 
       sonarsource/sonar-scanner-cli
-    - rm -r .sonar-cache
 
 deploy_service:
   stage: production
