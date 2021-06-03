@@ -46,4 +46,4 @@ sonarqube_scan_project:
     - docker run --rm -e SONAR_HOST_URL=${SONAR_HOST_URL} 
       -v "${PWD}:/usr/src" --user="$(id -u):$(id -g)" 
       sonarsource/sonar-scanner-cli -Dsonar.qualitygate.wait=true -Dsonar.projectKey=${CI_PROJECT_NAME}-${CI_PROJECT_ID} -Dsonar.projectName=${CI_PROJECT_PATH_SLUG} -Dsonar.projectVersion=${CI_COMMIT_SHORT_SHA}
-    - rm -r .scannerwork
+    #- rm -r .scannerwork
