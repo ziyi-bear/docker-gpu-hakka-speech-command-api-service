@@ -34,17 +34,10 @@ service_log:
 
 sonarqube_scan_project:
   stage: scan
-  # sonarqube掃描快取資料(主要針對container類型, 這裡是shell, mount will have issue)
-  #cache: 
-  #  key: ${CI_COMMIT_REF_SLUG}-sonar-cache
-  #  paths:
-  #    - .sonar-cache/
   # 允許在資安掃描時失敗
   allow_failure: true
   script:
     - echo "Prepare Sonarqube Scan - Server ${SONAR_HOST_URL}" 
     - docker run --rm -e SONAR_HOST_URL=${SONAR_HOST_URL} 
-      -v ${PWD}/.sonar-cache:/opt/sonar-scanner/.sonar/cache 
       -v "${PWD}:/usr/src" --user="$(id -u):$(id -g)" 
       sonarsource/sonar-scanner-cli -Dsonar.qualitygate.wait=true -Dsonar.projectKey=${CI_PROJECT_NAME}-${CI_PROJECT_ID} -Dsonar.projectName=${CI_PROJECT_PATH_SLUG} -Dsonar.projectVersion=${CI_COMMIT_SHORT_SHA}
-    #- rm -r .scannerwork
