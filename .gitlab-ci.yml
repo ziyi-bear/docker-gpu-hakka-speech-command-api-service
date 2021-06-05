@@ -1,3 +1,9 @@
+job:
+  tags:
+    - shell
+    - nvidia-docker
+    - skynet
+
 before_script:
   - nvidia-smi
 
