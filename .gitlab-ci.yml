@@ -13,31 +13,54 @@ stages:
 hakka_service_image:
   stage: build
   script:
+    - echo 'CI_REGISTRY_IMAGE:' + $CI_REGISTRY_IMAGE
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
-    - docker build -t $CI_REGISTRY/hakka-405/docker-gpu-hakka-speech-command-api-service/hakka-service .
-    - docker push $CI_REGISTRY/hakka-405/docker-gpu-hakka-speech-command-api-service/hakka-service
+    - docker build -t $CI_REGISTRY_IMAGE/hakka-service .
+    - docker push $CI_REGISTRY_IMAGE/hakka-service
 
 deploy_service:
   stage: production
+  tags:
+    - shell
+    - nvidia-docker
+    - skynet
   needs: ["hakka_service_image"]
   script:
     - ls 
-    - docker-compose up -d --build
+    - docker-compose up -d
+    - docker-compose ps
+    - docker-compose logs
     #- docker run my-docker-image /script/to/run/tests
 
-service_log:
-  stage: log
-  needs: ["deploy_service"]
-  script:
-    - docker-compose ps 
-    - docker-compose logs
-
-sonarqube_scan_project:
+## Sonarqube掃描
+sonarqube-check:
   stage: scan
-  # 允許在資安掃描時失敗
-  allow_failure: true
+  tags:
+    - kubernetes
+  image:
+    name: ${HARBOR_REG}/sonarsource/sonar-scanner-cli:latest
+    entrypoint: [""]
+  variables:
+    SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"  # Defines the location of the analysis task cache
+    GIT_DEPTH: "0"  # Tells git to fetch all the branches of the project, required by the analysis task
+  cache:
+    key: "${CI_JOB_NAME}"
+    paths:
+      - .sonar/cache
   script:
-    - echo "Prepare Sonarqube Scan - Server ${SONAR_HOST_URL}" 
-    - docker run --rm -e SONAR_HOST_URL=${SONAR_HOST_URL} 
-      -v "${PWD}:/usr/src" --user="$(id -u):$(id -g)" 
-      sonarsource/sonar-scanner-cli -Dsonar.qualitygate.wait=true -Dsonar.projectKey=${CI_PROJECT_NAME}-${CI_PROJECT_ID} -Dsonar.projectName=${CI_PROJECT_PATH_SLUG} -Dsonar.projectVersion=${CI_COMMIT_SHORT_SHA}
+    - sonar-scanner -Dsonar.qualitygate.wait=true -Dsonar.projectKey=${CI_PROJECT_NAME}-${CI_PROJECT_ID} -Dsonar.projectName=${CI_PROJECT_PATH_SLUG} -Dsonar.projectVersion=${CI_COMMIT_BRANCH}:${CI_COMMIT_SHORT_SHA} 
+  allow_failure: true
+  only:
+    - merge_requests
+    - master
+    - develop
+
+#sonarqube_scan_project:
+#  stage: scan
+#  # 允許在資安掃描時失敗
+#  allow_failure: true
+#  script:
+#    - echo "Prepare Sonarqube Scan - Server ${SONAR_HOST_URL}" 
+#    - docker run --rm -e SONAR_HOST_URL=${SONAR_HOST_URL} 
+#      -v "${PWD}:/usr/src" --user="$(id -u):$(id -g)" 
+#      sonarsource/sonar-scanner-cli -Dsonar.qualitygate.wait=true -Dsonar.projectKey=${CI_PROJECT_NAME}-${CI_PROJECT_ID} -Dsonar.#projectName=${CI_PROJECT_PATH_SLUG} -Dsonar.projectVersion=${CI_COMMIT_SHORT_SHA}
