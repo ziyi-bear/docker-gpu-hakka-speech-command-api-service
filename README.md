@@ -1,4 +1,5 @@
 # docker-gpu-speech-command-api-service
+[![Quality gate](https://sonarqube.406.csie.nuu.edu.tw/api/project_badges/quality_gate?project=docker-gpu-hakka-speech-command-api-service-14)](https://sonarqube.406.csie.nuu.edu.tw/dashboard?id=docker-gpu-hakka-speech-command-api-service-14)
 tensorflow speech command example simple api service 
 
 ## 前置工作流程
