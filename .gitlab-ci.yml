@@ -1,5 +1,5 @@
-before_script:
-  - nvidia-smi
+#before_script:
+#  - nvidia-smi
 
 variables:
   GIT_STRATEGY: clone
@@ -12,6 +12,10 @@ stages:
 
 hakka_service_image:
   stage: build
+  tags:
+    - shell
+    - nvidia-docker
+    - skynet
   script:
     - echo 'CI_REGISTRY_IMAGE:' + $CI_REGISTRY_IMAGE
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
