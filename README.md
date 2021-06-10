@@ -33,6 +33,14 @@ tensorflow speech command example simple api service
 @endwbs
 ```
 
+## 聊天室常用指令
+```
+# 建立問題
+/docker-gpu-hakka-speech-command-api-service issue create 你想要建立的問題名稱
+# 執行工作
+/docker-gpu-hakka-speech-command-api-service run 要執行的工作名稱
+```
+
 # usage 
 `sudo docker-compose up -d --build`
 
