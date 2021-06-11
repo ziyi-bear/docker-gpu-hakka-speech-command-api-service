@@ -72,7 +72,7 @@ sonarqube-check:
     - skynet
   script:
     - echo get service model-$CHAT_INPUT logs
-    - docker-compose logs model-$CHAT_INPUT
+    - docker-compose logs model-$CHAT_INPUT --tail 50
 
 #
 範例回傳:
