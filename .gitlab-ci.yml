@@ -61,6 +61,17 @@ sonarqube-check:
   #  - master
   #  - develop
 
+#
+範例回傳:
+  stage: chatops
+  only: [chat]
+  tags:
+    - shell
+    - nvidia-docker
+    - skynet
+  script:
+    - echo 'user input chat arg:'$CHAT_INPUT
+
 #sonarqube_scan_project:
 #  stage: scan
 #  # 允許在資安掃描時失敗
