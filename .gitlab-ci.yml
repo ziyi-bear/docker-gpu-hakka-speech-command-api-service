@@ -61,6 +61,19 @@ sonarqube-check:
   #  - master
   #  - develop
 
+# 取得指定模型服務狀況
+# XXX run 取得模型log alpha1
+取得模型log:
+  stage: chatops
+  only: [chat]
+  tags:
+    - shell
+    - nvidia-docker
+    - skynet
+  script:
+    - echo get service model-$CHAT_INPUT logs
+    - docker-compose logs model-$CHAT_INPUT
+
 #
 範例回傳:
   stage: chatops
