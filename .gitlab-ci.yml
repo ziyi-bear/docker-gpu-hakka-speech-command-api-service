@@ -1,5 +1,7 @@
-#before_script:
-#  - nvidia-smi
+include:
+  - project: 'hakka-405/docker-gpu-hakka-speech-gitlab-ci'
+    ref: master
+    file: '/templates/chatops.yml'
 
 #variables:
 #  GIT_STRATEGY: clone
@@ -7,7 +9,7 @@
 stages:
   - build
   - production
-  - log
+  - chatops
   - scan
 
 hakka_service_image:
