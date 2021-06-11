@@ -54,10 +54,10 @@ sonarqube-check:
   script:
     - sonar-scanner -Dsonar.qualitygate.wait=true -Dsonar.projectKey=${CI_PROJECT_NAME}-${CI_PROJECT_ID} -Dsonar.projectName=${CI_PROJECT_PATH_SLUG} -Dsonar.projectVersion=${CI_COMMIT_BRANCH}:${CI_COMMIT_SHORT_SHA} 
   allow_failure: true
-  only:
-    - merge_requests
-    - master
-    - develop
+  #only:
+  #  - merge_requests
+  #  - master
+  #  - develop
 
 #sonarqube_scan_project:
 #  stage: scan
