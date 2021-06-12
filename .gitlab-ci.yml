@@ -2,6 +2,9 @@ include:
   - project: 'hakka-405/docker-gpu-hakka-speech-gitlab-ci'
     ref: master
     file: '/templates/chatops.yml'
+  - project: 'csie-406/doc-gitlab-406'
+    ref: master
+    file: 'templates/share/sonarqube.yml'
 
 #variables:
 #  GIT_STRATEGY: clone
@@ -10,7 +13,7 @@ stages:
   - build
   - production
   - chatops
-  - scan
+  - test
 
 hakka_service_image:
   stage: build
