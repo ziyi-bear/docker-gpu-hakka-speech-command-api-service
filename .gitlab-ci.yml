@@ -4,7 +4,7 @@ include:
     file: '/templates/chatops.yml'
   - project: 'csie-406/doc-gitlab-406'
     ref: master
-    file: 'templates/share/sonarqube.yml'
+    file: 'templates/share/zh-Hant/sonarqube.yml'
 
 #variables:
 #  GIT_STRATEGY: clone
