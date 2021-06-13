@@ -54,16 +54,6 @@ deploy_service:
     - echo get service model-$CHAT_INPUT logs
     - docker-compose logs model-$CHAT_INPUT --tail="50"
 
-取得服務模型清單:
-  stage: chatops
-  only: [chat]
-  tags:
-    - shell
-    - nvidia-docker
-    - skynet
-  script:
-    - docker-compose ps
-
 #
 範例回傳:
   stage: chatops
