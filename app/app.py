@@ -152,7 +152,7 @@ def run_wav_test():
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], fix_file_name))
       # 準備進行辨識工作
       outcomeDict = label_wav(wav_path, labels_path, graph_path, 'wav_data:0', 'labels_softmax:0', 3)
-      return json.dumps(outcomeDict)
+      return json.dumps(str(outcomeDict))
   return render_template('hakka-uplaod.html', classCount=int(classCount), sample_rate=int(sample_rate), soundlenght=int(soundlenght), step=int(step))
 
 if __name__ == "__main__":
