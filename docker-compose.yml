@@ -17,7 +17,7 @@ services:
             - SOUND_LENGTH=25
             - STEP=25
         volumes:
-            - './模型/alpha/conv_labels_1.txt:/labels.txt:rw'
+            - './模型/alpha/conv_labels1.txt:/labels.txt:rw'
             - './模型/alpha/my_frozen_graph1.pb:/graph.pb:rw'
     # 模型alpha1
     model-alpha1:
@@ -35,7 +35,7 @@ services:
             - SOUND_LENGTH=25
             - STEP=25
         volumes:
-            - './模型/alpha1/conv_labels_1.txt:/labels.txt:rw'
+            - './模型/alpha1/conv_labels1.txt:/labels.txt:rw'
             - './模型/alpha1/my_frozen_graph1.pb:/graph.pb:rw'
         # 模型alpha2
     model-alpha2:
@@ -71,7 +71,7 @@ services:
             - SOUND_LENGTH=25
             - STEP=25
         volumes:
-            - './模型/beta/conv_labels_2.txt:/labels.txt:rw'
+            - './模型/beta/conv_labels2.txt:/labels.txt:rw'
             - './模型/beta/my_frozen_graph2.pb:/graph.pb:rw'
     # 模型beta1
     model-beta:
@@ -89,9 +89,26 @@ services:
             - SOUND_LENGTH=25
             - STEP=25
         volumes:
-            - './模型/beta1/conv_labels_2.txt:/labels.txt:rw'
+            - './模型/beta1/conv_labels2.txt:/labels.txt:rw'
             - './模型/beta1/my_frozen_graph2.pb:/graph.pb:rw'
-
+    # 模型beta2
+    model-beta:
+        #build: ./
+        image: registry.406.csie.nuu.edu.tw/hakka-405/docker-gpu-hakka-speech-command-api-service/hakka-service:latest
+        restart: always
+        environment:
+            - VIRTUAL_HOST=beta2.hakka.csie.nuu.edu.tw
+            - LETSENCRYPT_HOST=beta2.hakka.csie.nuu.edu.tw
+            - LETSENCRYPT_EMAIL=m0724001@gm.nuu.edu.tw
+            - VIRTUAL_PORT=80
+            # 網頁顯示參數
+            - CLASS_COUNT=10
+            - SAMPLE_RATE=16000
+            - SOUND_LENGTH=25
+            - STEP=25
+        volumes:
+            - './模型/beta2/conv_labels2.txt:/labels.txt:rw'
+            - './模型/beta2/my_frozen_graph2.pb:/graph.pb:rw'
     # 模型charlie
     model-charlie:
         #build: ./
@@ -108,5 +125,41 @@ services:
             - SOUND_LENGTH=25
             - STEP=25
         volumes:
-            - './模型/charlie/conv_labels_3.txt:/labels.txt:rw'
+            - './模型/charlie/conv_labels3.txt:/labels.txt:rw'
             - './模型/charlie/my_frozen_graph3.pb:/graph.pb:rw'
+    # 模型charlie1
+    model-charlie:
+        #build: ./
+        image: registry.406.csie.nuu.edu.tw/hakka-405/docker-gpu-hakka-speech-command-api-service/hakka-service:latest
+        restart: always
+        environment:
+            - VIRTUAL_HOST=charlie1.hakka.csie.nuu.edu.tw
+            - LETSENCRYPT_HOST=charlie1.hakka.csie.nuu.edu.tw
+            - LETSENCRYPT_EMAIL=m0724001@gm.nuu.edu.tw
+            - VIRTUAL_PORT=80
+            # 網頁顯示參數
+            - CLASS_COUNT=10
+            - SAMPLE_RATE=16000
+            - SOUND_LENGTH=25
+            - STEP=25
+        volumes:
+            - './模型/charlie1/conv_labels3.txt:/labels.txt:rw'
+            - './模型/charlie1/my_frozen_graph3.pb:/graph.pb:rw'
+    # 模型charlie2
+    model-charlie:
+        #build: ./
+        image: registry.406.csie.nuu.edu.tw/hakka-405/docker-gpu-hakka-speech-command-api-service/hakka-service:latest
+        restart: always
+        environment:
+            - VIRTUAL_HOST=charlie2.hakka.csie.nuu.edu.tw
+            - LETSENCRYPT_HOST=charlie2.hakka.csie.nuu.edu.tw
+            - LETSENCRYPT_EMAIL=m0724001@gm.nuu.edu.tw
+            - VIRTUAL_PORT=80
+            # 網頁顯示參數
+            - CLASS_COUNT=10
+            - SAMPLE_RATE=16000
+            - SOUND_LENGTH=25
+            - STEP=25
+        volumes:
+            - './模型/charlie2/conv_labels3.txt:/labels.txt:rw'
+            - './模型/charlie2/my_frozen_graph3.pb:/graph.pb:rw'
