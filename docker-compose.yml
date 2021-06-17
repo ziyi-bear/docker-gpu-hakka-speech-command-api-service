@@ -17,7 +17,7 @@ services:
             - SOUND_LENGTH=25
             - STEP=25
         volumes:
-            - './模型/alpha/conv_labels_1.txt:/labels.txt:rw'
+            - './模型/alpha/conv_labels1.txt:/labels.txt:rw'
             - './模型/alpha/my_frozen_graph1.pb:/graph.pb:rw'
     # 模型alpha1
     model-alpha1:
@@ -71,7 +71,7 @@ services:
             - SOUND_LENGTH=25
             - STEP=25
         volumes:
-            - './模型/beta/conv_labels_2.txt:/labels.txt:rw'
+            - './模型/beta/conv_labels2.txt:/labels.txt:rw'
             - './模型/beta/my_frozen_graph2.pb:/graph.pb:rw'
     # 模型beta1
     model-beta1:
@@ -125,7 +125,7 @@ services:
             - SOUND_LENGTH=25
             - STEP=25
         volumes:
-            - './模型/charlie/conv_labels_3.txt:/labels.txt:rw'
+            - './模型/charlie/conv_labels3.txt:/labels.txt:rw'
             - './模型/charlie/my_frozen_graph3.pb:/graph.pb:rw'
     # 模型charlie1
     model-charlie1:
