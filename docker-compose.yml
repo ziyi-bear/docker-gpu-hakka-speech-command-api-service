@@ -74,7 +74,7 @@ services:
             - './模型/beta/conv_labels2.txt:/labels.txt:rw'
             - './模型/beta/my_frozen_graph2.pb:/graph.pb:rw'
     # 模型beta1
-    model-beta:
+    model-beta1:
         #build: ./
         image: registry.406.csie.nuu.edu.tw/hakka-405/docker-gpu-hakka-speech-command-api-service/hakka-service:latest
         restart: always
@@ -92,7 +92,7 @@ services:
             - './模型/beta1/conv_labels2.txt:/labels.txt:rw'
             - './模型/beta1/my_frozen_graph2.pb:/graph.pb:rw'
     # 模型beta2
-    model-beta:
+    model-beta2:
         #build: ./
         image: registry.406.csie.nuu.edu.tw/hakka-405/docker-gpu-hakka-speech-command-api-service/hakka-service:latest
         restart: always
@@ -128,7 +128,7 @@ services:
             - './模型/charlie/conv_labels3.txt:/labels.txt:rw'
             - './模型/charlie/my_frozen_graph3.pb:/graph.pb:rw'
     # 模型charlie1
-    model-charlie:
+    model-charlie1:
         #build: ./
         image: registry.406.csie.nuu.edu.tw/hakka-405/docker-gpu-hakka-speech-command-api-service/hakka-service:latest
         restart: always
@@ -146,7 +146,7 @@ services:
             - './模型/charlie1/conv_labels3.txt:/labels.txt:rw'
             - './模型/charlie1/my_frozen_graph3.pb:/graph.pb:rw'
     # 模型charlie2
-    model-charlie:
+    model-charlie2:
         #build: ./
         image: registry.406.csie.nuu.edu.tw/hakka-405/docker-gpu-hakka-speech-command-api-service/hakka-service:latest
         restart: always
