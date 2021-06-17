@@ -53,7 +53,7 @@ services:
             - SOUND_LENGTH=25
             - STEP=25
         volumes:
-            - './模型/alpha2/conv_labels_1.txt:/labels.txt:rw'
+            - './模型/alpha2/conv_labels1.txt:/labels.txt:rw'
             - './模型/alpha2/my_frozen_graph1.pb:/graph.pb:rw'
     # 模型beta
     model-beta:
